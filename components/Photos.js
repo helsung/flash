@@ -7,14 +7,16 @@ export default function Photos({ photos }) {
   return (
     <div className={styles.gallery}>
       {photos.map((photo) => (
-        <div key={photo.id}>
-          <Image
-            src={photo.src.large}
-            width={600}
-            height={900}
-            alt="single-photo"
-          />
-        </div>
+        <Link key={photo.id} href={`/photos/${photo.id}`} passHref>
+          <div>
+            <Image
+              src={photo.src.large}
+              width={600}
+              height={900}
+              alt="single-photo"
+            />
+          </div>
+        </Link>
       ))}
     </div>
   );
