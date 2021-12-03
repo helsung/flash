@@ -3,25 +3,17 @@ import Photos from "../components/Photos";
 import Navbar from "../components/Navbar";
 import { getQueriedPhotos } from "../lib/photos";
 
-export default function Queried({ queriedPhotos, totalPages }) {
-  const [photos, setPhotos] = useState(queriedPhotos.photos);
+export default function Queried({ queriedPhotos }) {
+  const { photos } = queriedPhotos;
   const [input, setInput] = useState("");
 
   const handleInput = (e) => {
     setInput(e);
   };
 
-  const handleSearch = () => {
-    setPhotos(queriedPhotos.photos);
-  };
-
   return (
     <div>
-      <Navbar
-        input={input}
-        handleInput={handleInput}
-        handleSearch={handleSearch}
-      />
+      <Navbar input={input} handleInput={handleInput} />
       <Photos photos={photos} />
     </div>
   );
@@ -29,11 +21,10 @@ export default function Queried({ queriedPhotos, totalPages }) {
 
 export async function getServerSideProps({ params }) {
   const queriedPhotos = (await getQueriedPhotos(params.query)) || null;
-  const totalPages = Math.ceil(queriedPhotos.total_results / 12);
+
   return {
     props: {
       queriedPhotos,
-      totalPages,
     },
   };
 }
