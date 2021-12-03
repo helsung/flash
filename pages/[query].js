@@ -21,8 +21,6 @@ export default function Queried({ queriedPhotos }) {
     }
   }, [router.asPath]);
 
-  console.log(router);
-
   const handleInput = (e) => {
     setInput(e);
   };

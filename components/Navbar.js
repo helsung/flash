@@ -5,7 +5,7 @@ import logo from "./,,/../../public/logo.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function Navbar({ input, handleInput, refreshData }) {
+export default function Navbar({ input, handleInput }) {
   const router = useRouter();
   return (
     <div className={styles.container}>
@@ -18,7 +18,7 @@ export default function Navbar({ input, handleInput, refreshData }) {
         onChange={(e) => handleInput(e.target.value)}
       />
       <Link href={`/${input}`} passHref>
-        <button onClick={refreshData}>Search</button>
+        <button className={styles.button}>Search</button>
       </Link>
     </div>
   );
