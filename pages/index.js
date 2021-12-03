@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import Photos from "../components/Photos";
-import Image from "next/image";
 import { getCuratedPhotos } from "../lib/photos";
 import Pagination from "next-pagination";
 import { useRouter } from "next/router";
-import langingPageImg from "../public/landing-page.jpg";
 
 export default function Home({ curatedPhotos }) {
   const { photos } = curatedPhotos;
@@ -16,10 +14,15 @@ export default function Home({ curatedPhotos }) {
   const perPage = router.query.size || 20;
   const totalPages = Math.ceil(totalResults / perPage);
 
+  // redirect homepage route with URL params to support pagination
   useEffect(() => {
     if (router.asPath === "/") router.replace("/?page=1&size=20");
   }, [router.asPath]);
 
+  /**
+   * Update user input for queried search onto component's local state. Invoke in Navbar component
+   * @param {string} e
+   */
   const handleInput = (e) => {
     setInput(e);
   };
@@ -30,7 +33,6 @@ export default function Home({ curatedPhotos }) {
 
       <div className={styles.landingContainer}>
         <div className={styles.backgroundImg}></div>
-
         <h2 className={styles.description}>
           Discover beautiful photos from visionary photographers
         </h2>
@@ -42,6 +44,12 @@ export default function Home({ curatedPhotos }) {
   );
 }
 
+/**
+ * Update user input for queried search onto component's local state
+ * https://nextjs.org/docs/basic-features/data-fetching
+ * @param {Object} query //de-constructed from `context` parameter representing URL query params
+ * @return {Object} //curated photos fetched from api call that is accessible as props in the page component
+ */
 export async function getServerSideProps({ query }) {
   const { page, size } = query;
   const curatedPhotos = await getCuratedPhotos(+page, +size);

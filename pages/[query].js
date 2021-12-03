@@ -14,13 +14,16 @@ export default function Queried({ queriedPhotos }) {
   const perPage = router.query.size || 20;
   const totalPages = Math.ceil(totalResults / perPage);
 
+  // redirect queried route with URL params to support pagination
   useEffect(() => {
-    if (router.asPath === `/${query}`) {
-      console.log("here");
+    if (router.asPath === `/${query}`)
       router.replace(router.asPath + "/?page=1&size=20");
-    }
   }, [router.asPath]);
 
+  /**
+   * Update user input for queried search onto component's local state. Invoke in Navbar component
+   * @param {string} e
+   */
   const handleInput = (e) => {
     setInput(e);
   };
@@ -34,6 +37,12 @@ export default function Queried({ queriedPhotos }) {
   );
 }
 
+/**
+ * Update user input for queried search onto component's local state
+ * https://nextjs.org/docs/basic-features/data-fetching
+ * @param {Object} query //de-constructed from `context` parameter representing URL query params
+ * @return {Object} //queried photos fetched from api call that is accessible as props in the page component
+ */
 export async function getServerSideProps({ params, query }) {
   const { page, size } = query;
   const queriedPhotos =
