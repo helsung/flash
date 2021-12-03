@@ -15,7 +15,7 @@ export default function Home({ curatedPhotos }) {
   const totalPages = Math.ceil(totalResults / perPage);
 
   useEffect(() => {
-    router.replace("/?page=1&size=20");
+    if (router.asPath === "/") router.replace("/?page=1&size=20");
   }, []);
 
   const handleInput = (e) => {
