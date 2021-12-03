@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import Photos from "../components/Photos";
+import Image from "next/image";
 import { getCuratedPhotos } from "../lib/photos";
 import Pagination from "next-pagination";
 import { useRouter } from "next/router";
+import langingPageImg from "../public/landing-page.jpg";
 
 export default function Home({ curatedPhotos }) {
   const { photos } = curatedPhotos;
@@ -16,7 +18,7 @@ export default function Home({ curatedPhotos }) {
 
   useEffect(() => {
     if (router.asPath === "/") router.replace("/?page=1&size=20");
-  }, []);
+  }, [router.asPath]);
 
   const handleInput = (e) => {
     setInput(e);
@@ -25,6 +27,14 @@ export default function Home({ curatedPhotos }) {
   return (
     <div className={styles.container}>
       <Navbar input={input} handleInput={handleInput} />
+      <div className={styles.backgroundImg}>
+        <Image
+          src={langingPageImg}
+          alt="background"
+          layout="fill"
+          objectContains="true"
+        />
+      </div>
       <Photos photos={photos} />
       <Pagination total={totalPages} />
     </div>

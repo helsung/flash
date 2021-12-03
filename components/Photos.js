@@ -8,7 +8,7 @@ export default function Photos({ photos }) {
     <div className={styles.gallery}>
       {photos.map((photo) => (
         <Link key={photo.id} href={`/photos/${photo.id}`} passHref>
-          <div>
+          <div className={styles.image}>
             <Image
               src={photo.src.large}
               width={600}
