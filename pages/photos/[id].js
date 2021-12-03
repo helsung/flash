@@ -25,6 +25,11 @@ export default function Photo({ photo }) {
   );
 }
 
+/**
+ * Fetch single photos by id from api call that is accessible as props in the page component
+ * @param {Object} query //de-constructed from `context` parameter representing URL query params
+ * @return {Object}
+ */
 export async function getServerSideProps({ params }) {
   const photo = await getSinglePhoto(params.id);
   return {

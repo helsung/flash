@@ -45,10 +45,10 @@ export default function Home({ curatedPhotos }) {
 }
 
 /**
- * Update user input for queried search onto component's local state
+ * Fetch curated photos from api call that is accessible as props in the page component
  * https://nextjs.org/docs/basic-features/data-fetching
  * @param {Object} query //de-constructed from `context` parameter representing URL query params
- * @return {Object} //curated photos fetched from api call that is accessible as props in the page component
+ * @return {Object}
  */
 export async function getServerSideProps({ query }) {
   const { page, size } = query;

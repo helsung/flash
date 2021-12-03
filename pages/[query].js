@@ -38,8 +38,7 @@ export default function Queried({ queriedPhotos }) {
 }
 
 /**
- * Update user input for queried search onto component's local state
- * https://nextjs.org/docs/basic-features/data-fetching
+ * Fetch queried photos from api call that is accessible as props in the page component
  * @param {Object} query //de-constructed from `context` parameter representing URL query params
  * @return {Object} //queried photos fetched from api call that is accessible as props in the page component
  */
