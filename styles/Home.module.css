@@ -4,5 +4,21 @@
 
 .backgroundImg {
   width: 100%;
-  height: 900px;
+  height: 70vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.47), rgba(0, 0, 0, 0.47)),
+    url("https://images.pexels.com/photos/1070945/pexels-photo-1070945.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.description {
+  position: absolute;
+  font-size: 36px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-weight: bold;
 }

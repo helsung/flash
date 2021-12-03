@@ -27,14 +27,15 @@ export default function Home({ curatedPhotos }) {
   return (
     <div className={styles.container}>
       <Navbar input={input} handleInput={handleInput} />
-      <div className={styles.backgroundImg}>
-        <Image
-          src={langingPageImg}
-          alt="background"
-          layout="fill"
-          objectContains="true"
-        />
+
+      <div className={styles.landingContainer}>
+        <div className={styles.backgroundImg}></div>
+
+        <h2 className={styles.description}>
+          Discover beautiful photos from visionary photographers
+        </h2>
       </div>
+
       <Photos photos={photos} />
       <Pagination total={totalPages} />
     </div>
