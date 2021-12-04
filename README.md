@@ -1,6 +1,7 @@
 # Flash
 
 A photo gallery app that allows users to browse and query photos from Pexels.
+![Flash](https://user-images.githubusercontent.com/65129124/144722128-b92a7838-2a97-4e1c-b034-f8104c8df92a.gif)
 
 ## Getting Started
 
