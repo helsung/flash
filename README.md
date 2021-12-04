@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Visit the deployed site here: [https://flash-five.vercel.app](https://flash-five.vercel.app)
+
 First, to run this app locally, create a Pexels API Key by the following instructions:
 
 1. Create a free account https://www.pexels.com/onboarding
